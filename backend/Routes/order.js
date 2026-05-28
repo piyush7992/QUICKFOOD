@@ -6,7 +6,7 @@ const Order = require("../models/Orders.cjs");
 
 router.post("/place-order", async (req, res) => {
   try {
-    userEmail = req.body.email;
+    userEmail = req.body.userEmail;
     items = req.body.items;
     address = req.body.address;
     totalAmount = req.body.totalAmount;
