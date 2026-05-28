@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
-import LiveMap from "../Components/LiveMap";
+// import LiveMap from "../Components/LiveMap";
 
 export default function MyOrders() {
   const [orders, setOrders] = useState([]);
@@ -48,7 +48,7 @@ export default function MyOrders() {
             <p><strong>📍 Address:</strong> {order.address}</p>
 
             {/* ✅ LIVE MAP MOVED HERE */}
-            <LiveMap orderId={order._id} />
+            {/* <LiveMap orderId={order._id} /> */}
 
             <ul className="list-group mb-3">
               {order.items.map((item, i) => (
