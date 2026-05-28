@@ -43,7 +43,7 @@ import { useNavigate } from "react-router-dom";
 
 
   const handlePlaceOrder = async () => {
-    const res = await fetch("http://localhost:5000/api/place-order", {
+    const res = await fetch("https://quickfood-pcqa.onrender.com/api/place-order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

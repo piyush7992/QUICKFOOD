@@ -8,7 +8,7 @@ export default function MyOrders() {
 
   useEffect(() => {
     const fetchOrders = async () => {
-      const res = await fetch("http://localhost:5000/api/my-orders", {
+      const res = await fetch("https://quickfood-pcqa.onrender.com/api/my-orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userEmail }),
