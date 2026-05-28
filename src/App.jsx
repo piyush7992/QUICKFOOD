@@ -2,8 +2,8 @@ import './App.css'
 // import { CartProvider } from './Components/ContextReducer'
 import Navbar from './Components/Navbar'
 import Home from './Screen/Home'
-import Signin from './Screen/signin'
-import Signup from './Screen/signup'
+import Signin from './Screen/Signin'
+import Signup from './Screen/Signup'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
