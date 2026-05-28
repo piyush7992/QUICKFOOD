@@ -1,8 +1,5 @@
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import { useEffect, useState } from "react";
-import { io } from "socket.io-client";
-
-const socket = io("http://localhost:5000");
 
 // THIS WILL MOVE MAP WHEN RIDER MOVES
 function ChangeMapView({ center }) {
