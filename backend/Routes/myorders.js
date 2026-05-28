@@ -5,7 +5,7 @@ const Order = require("../models/Orders.cjs"); // adjust name if needed
 // Fetch orders for logged-in user
 router.post("/my-orders", async (req, res) => {
   try {
-    let mydata = await Order.find({ userEmail: req.body.email });
+    let mydata = await Order.find({ userEmail: req.body.userEmail });
     console.log("My Orders Data:", mydata); // Debugging log
     res.json({ success: true, orders: mydata });
   } catch (err) {
