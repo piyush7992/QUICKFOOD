@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import Gofoodimg from '../Assets/Gofoodimg.jpg'
+import Gofoodimg from '../assets/Gofoodimg.jpg'
 import { Link } from 'react-router-dom'
 import { useCart, useDispatchCart } from '../Components/ContextReducer';
 export default function (props) {
