@@ -25,14 +25,15 @@ export default function signin() {
   if(json.success){
 
   localStorage.setItem("authToken", json.token);
-  localStorage.setItem("role", json.role);   // save role
+  // localStorage.setItem("role", json.role);   // save role
+  localStorage.setItem("userEmail", json.email);
 
-  if(json.role === "rider"){
-    navigate("/riderdashboard");    // 🚚 Rider Panel
-  }
-  else{
+  // if(json.role === "rider"){
+  //   navigate("/riderdashboard");    // 🚚 Rider Panel
+  // }
+  // else{
     navigate("/");                   // 👤 User Home
-  }
+  // }
 }
 
   };

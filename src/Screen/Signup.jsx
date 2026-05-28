@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function signup() {
   const [credentials, setcredentials] = useState({
@@ -9,6 +10,7 @@ export default function signup() {
     password: "",
     location: "",
   });
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch("http://localhost:5000/api/createuser", {
@@ -21,11 +23,16 @@ export default function signup() {
         email: credentials.email,
         password: credentials.password,
         location: credentials.location,
-        role: credentials.role,
+        // role: credentials.role,
       }),
     });
     const json = await response.json();
     console.log(json);
+    if (json.success) {
+    alert("Account created successfully");
+
+    navigate("/signin");
+  }
     if (!json.success) {
       alert("Enter valid credentials");
     }
@@ -106,7 +113,7 @@ export default function signup() {
               required
             />
           </div>
-          {/* ROLE */}
+          {/* ROLE
           <div className="mb-4">
             <label className="form-label fw-semibold">Account Type</label>
 
@@ -120,9 +127,9 @@ export default function signup() {
                 onChange={onChange}
               />
               <label className="form-check-label">Customer</label>
-            </div>
+            </div> */}
 
-            <div className="form-check">
+            {/* <div className="form-check">
               <input
                 className="form-check-input"
                 type="radio"
@@ -133,7 +140,7 @@ export default function signup() {
               />
               <label className="form-check-label">Rider</label>
             </div>
-          </div>
+          </div> */}
 
           {/* Submit Button */}
           <button type="submit" className="btn btn-success w-100 fw-bold">

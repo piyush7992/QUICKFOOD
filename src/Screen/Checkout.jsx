@@ -60,7 +60,7 @@ import { useNavigate } from "react-router-dom";
     if (result.success) {
       alert("Order placed! Pay cash on delivery 🚚");
       dispatch({ type: "CLEAR_CART" });
-      navigate("/");
+      navigate("/myorders");
     }
   };
 

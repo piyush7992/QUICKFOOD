@@ -18,11 +18,11 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  role: {
-    type: String,
-    enum: ['customer', 'rider'],
-    default: 'customer'
-  },
+  // role: {
+  //   type: String,
+  //   enum: ['customer', 'rider'],
+  //   default: 'customer'
+  // },
   date: {
     type: Date,
     default: Date.now,

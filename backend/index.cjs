@@ -1,25 +1,25 @@
 const express = require('express')
 const app = express()
-const port = 5000
+const port = process.env.PORT || 5000
 const mongoDb = require('./db');
 const http = require("http");
-const socket = require("./socket/socket");
+// const socket = require("./socket/socket");
 
-const server = http.createServer(app);
-const io = socket.init(server);
+// const server = http.createServer(app);
+// const io = socket.init(server); 
 
-server.listen(5000, () => {
-  console.log("Server Running with Socket 🔥");
-});
-io.on("connection",(socket)=>{
+// server.listen(5000, () => {
+//   console.log("Server Running with Socket 🔥");
+// });
+// io.on("connection",(socket)=>{
 
-  socket.on("riderLocation",(data)=>{
+//   socket.on("riderLocation",(data)=>{
 
-    io.emit("riderLocationUpdate",data);
+//     io.emit("riderLocationUpdate",data);
 
-  });
+//   });
 
-});
+// });
 
 
 mongoDb();
@@ -35,8 +35,6 @@ app.use('/api', require('./Routes/createuser'));
 app.use('/api', require('./Routes/displayData'));
 app.use('/api', require('./Routes/order'));
 app.use('/api', require('./Routes/myorders'));
-app.use('/api', require('./Routes/ridersroute'));
-app.use('/api', require('./Routes/createrider'));
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })

@@ -1,12 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const Order = require("../models/Orders.cjs");
-const socket = require("../socket/socket");
+
 
 
 router.post("/place-order", async (req, res) => {
   try {
-    const { items, address, totalAmount, userEmail } = req.body;
+    userEmail = req.body.email;
+    items = req.body.items;
+    address = req.body.address;
+    totalAmount = req.body.totalAmount;
 
     const newOrder = new Order({
       items,
@@ -20,11 +23,6 @@ router.post("/place-order", async (req, res) => {
     });
 
     await newOrder.save();
-     const io = socket.getIO();
-    io.to("online-riders").emit("new-order", newOrder);
-
-    console.log("🔥 Customer Order Sent To Riders");
-    
     res.json({ success: true, message: "Order placed successfully" });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });

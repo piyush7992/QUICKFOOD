@@ -23,7 +23,7 @@ router.post('/createuser', [
       email: req.body.email,
       password: secPass,
       location: req.body.location,
-      role:req.body.role
+      // role:req.body.role
     });
     res.json({ success: true });
 }catch (error) {
@@ -35,7 +35,7 @@ router.post('/createuser', [
   });
 }
 })
-module.exports = router;
+// module.exports = router;
 // ROUTE 2: Authenticate a User using: POST "/api/loginuser". No login required
 router.post('/loginuser',
   [
@@ -58,7 +58,7 @@ router.post('/loginuser',
     const token = jwt.sign(data, jwtSecret);
       res.json({ 
       success: true, 
-      role: userdata.role,
+      // role: userdata.role,
       token: token,
       email: userdata.email, 
       name: userdata.name 
