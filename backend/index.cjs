@@ -1,44 +1,37 @@
-const express = require('express')
-const app = express()
-const port = process.env.PORT || 5000
-const mongoDb = require('./db');
-const http = require("http");
-// const socket = require("./socket/socket");
+const express = require("express");
+const cors = require("cors");
 
-// const server = http.createServer(app);
-// const io = socket.init(server); 
+const app = express();
 
-// server.listen(5000, () => {
-//   console.log("Server Running with Socket 🔥");
-// });
-// io.on("connection",(socket)=>{
+const port = process.env.PORT || 5000;
 
-//   socket.on("riderLocation",(data)=>{
-
-//     io.emit("riderLocationUpdate",data);
-
-//   });
-
-// });
-
+const mongoDb = require("./db");
 
 mongoDb();
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://quickfood-1-front.onrender.com/");
-  res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type,Authorization");
-  next();
-});
+
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://quickfood-1-front.onrender.com"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
-app.use('/api', require('./Routes/createuser'));
-app.use('/api', require('./Routes/displayData'));
-app.use('/api', require('./Routes/order'));
-app.use('/api', require('./Routes/myorders'));
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.use("/api", require("./Routes/createuser"));
+app.use("/api", require("./Routes/displayData"));
+app.use("/api", require("./Routes/order"));
+app.use("/api", require("./Routes/myorders"));
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`Example app listening on port ${port}`);
+});
